@@ -32,11 +32,13 @@ All traits may chain to another trait, e.g.:
     Medicine.First_Aid = 1
     print Medicine.First_Aid
 
-Both 'Medicine' and 'First_Aid' are numeric, but the second relies on the first, or is a "substat" of the first.
+Both 'Medicine' and 'First_Aid' are numeric, but the second relies on the first, 
+or is a "substat" of the first.
 In the first instance,'First_Aid' is set to 1, but only when referenced with 'Medicine':
     First_Aid == None
     Medicine.First_Aid == 1
-In the second instance, because they are numeric, 'First_Aid' and 'Medicine' are returned as a total:
+In the second instance, because they are numeric, 'First_Aid' and 'Medicine' 
+are returned as a total:
     Medicine + First_Aid
 
 
@@ -162,8 +164,9 @@ class NumericTrait(Trait):
         test_value = self.checkint(value)
         test_value = self.checkrange(test_value)
 
-        # now invoke the 'init' of the parent class
-        super(NumericTrait, self).__init__(name, test_value)  # in Python3 :: super().__init__(name, test_value)
+        # now invoke the 'init' of the parent class 
+        # In Python3 :: super().__init__(name, test_value)
+        super(NumericTrait, self).__init__(name, test_value)  
 
     # -- Numeric.Value: __set__, __get__, __add__ ---------------------------
     # @property: A great way to create a getter. `print numeric.value`
@@ -275,7 +278,10 @@ class Attribute(NumericTrait):
         temp_list = [key for key in sorted(self.attribute_dictionary) if name.lower() in key.lower()]
 
         # the following maintains key/value pair:
-        # new_list = [key for key, value in sorted(self.attribute_dictionary.items()) if name.lower() in key.lower()]
+        # new_list = 
+        #   [key for key, 
+        #   value in sorted(self.attribute_dictionary.items()) 
+        #   if name.lower() in key.lower()]
 
         if len(temp_list) == 0:
             raise ValueError("No match")
@@ -289,4 +295,5 @@ class Attribute(NumericTrait):
         temp_name = self.checkname(name)
 
         # now invoke the 'init' of the parent class
-        super(Attribute, self).__init__(temp_name, value)  # in Python3 :: super().__init__(name, value)
+        # In Python3 :: super().__init__(name, value)
+        super(Attribute, self).__init__(temp_name, value)  
